@@ -3,8 +3,6 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static pages.CartPage.SAUCE_LABS_BOLT_T_SHIRT_REMOVE_BUTTON;
-import static pages.ProductsPage.*;
 
 public class ProductsTest extends BaseTest {
 
@@ -12,7 +10,7 @@ public class ProductsTest extends BaseTest {
     public void addNumberItemsCart() {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
-        productsPage.addProducts(SAUCE_LABS_BACKPACK_ADD_BUTTON, SAUCE_LABS_ONESIE_ADD_BUTTON, TEST_ALL_THE_THINGS_T_SHIRT_RED_ADD_BUTTON);
+        productsPage.addProducts(SAUCE_LABS_BACKPACK, SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_BOLT_T_SHIRT);
         String expectedProductsSize = "3";
         Assert.assertEquals(cartPage.getCartNumber(), expectedProductsSize);
     }
@@ -21,9 +19,9 @@ public class ProductsTest extends BaseTest {
     public void removeNumberItemsCart() {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
-        productsPage.addProducts(SAUCE_LABS_BIKE_LIGHT_ADD_BUTTON, SAUCE_LABS_BOLT_T_SHIRT_ADD_BUTTON, SAUCE_LABS_FLEECE_JACKET_ADD_BUTTON, TEST_ALL_THE_THINGS_T_SHIRT_RED_ADD_BUTTON);
+        productsPage.addProducts(SAUCE_LABS_FLEECE_JACKET, SAUCE_LABS_ONESIE, TEST_ALL_THE_THINGS_T_SHIRT_RED, SAUCE_LABS_BOLT_T_SHIRT);
         productsPage.goToCart();
-        cartPage.removeProducts(SAUCE_LABS_BOLT_T_SHIRT_REMOVE_BUTTON);
+        cartPage.removeProducts(TEST_ALL_THE_THINGS_T_SHIRT_RED);
         String expectedProductsSize = "3";
         Assert.assertEquals(cartPage.getCartNumber(), expectedProductsSize);
     }
