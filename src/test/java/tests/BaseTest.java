@@ -14,6 +14,7 @@ import pages.ProductsPage;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest implements IConstants, ITestConstants {
+
     WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
@@ -27,6 +28,7 @@ public class BaseTest implements IConstants, ITestConstants {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         initPages();
+        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
     }
 
     public void initPages() {
