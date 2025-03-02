@@ -5,44 +5,45 @@ import org.testng.annotations.Test;
 
 public class ProductsTest extends BaseTest {
 
-    @Test
+    @Test(description = "Add products to cart and check count label")
     public void addNumberItemsCart() {
-        loginPage.login(USERNAME, PASSWORD)
-                .addProducts(SAUCE_LABS_BACKPACK, SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_BOLT_T_SHIRT);
+        loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
+        productsPage.addProducts(SAUCE_LABS_BACKPACK, SAUCE_LABS_BIKE_LIGHT,
+                SAUCE_LABS_BOLT_T_SHIRT);
         String expectedProductsSize = "3";
         Assert.assertEquals(productsPage.getCartProductsCount(), expectedProductsSize);
     }
 
-    @Test
+    @Test(description = "Remove products to cart and check count label")
     public void removeNumberItemsCart() {
-        loginPage.login(USERNAME, PASSWORD)
-                .addProducts(SAUCE_LABS_FLEECE_JACKET, SAUCE_LABS_ONESIE, TEST_ALL_THE_THINGS_T_SHIRT_RED, SAUCE_LABS_BOLT_T_SHIRT)
-                .goToCart()
-                .removeProducts(TEST_ALL_THE_THINGS_T_SHIRT_RED);
+        loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
+        productSteps.addProductsAndGoToCart(SAUCE_LABS_FLEECE_JACKET, SAUCE_LABS_ONESIE,
+                TEST_ALL_THE_THINGS_T_SHIRT_RED, SAUCE_LABS_BOLT_T_SHIRT);
+        cartPage.removeProducts(TEST_ALL_THE_THINGS_T_SHIRT_RED);
         String expectedProductsSize = "3";
         Assert.assertEquals(cartPage.getCartProductsCount(), expectedProductsSize);
     }
 
-    @Test
+    @Test(description = "Check continue shopping button")
     public void checkContinueShoppingButton() {
-        loginPage.login(USERNAME, PASSWORD)
-                .goToCart()
+        loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
+        productsPage.goToCart()
                 .clickContinueShoppingButton();
         Assert.assertEquals(driver.getCurrentUrl(), PRODUCTS_PAGE_URL);
     }
 
-    @Test
+    @Test(description = "Check the checkout button")
     public void checkCheckoutButton() {
-        loginPage.login(USERNAME, PASSWORD)
-                .goToCart()
+        loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
+        productsPage.goToCart()
                 .clickCheckoutButton();
         Assert.assertEquals(driver.getCurrentUrl(), CHECKOUT_PAGE_URL);
     }
 
-    @Test
+    @Test(description = "Check the logout button")
     public void checkLogoutButton() {
-        loginPage.login(USERNAME, PASSWORD)
-                .goToCart()
+        loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
+        productsPage.goToCart()
                 .logOut();
         Assert.assertTrue(loginPage.isLoginButtonDisplayed());
     }

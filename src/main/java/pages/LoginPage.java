@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Login user")
     public ProductsPage login(String username, String password) {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
@@ -31,8 +33,15 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
+    @Step("Wait for login page to open")
+    public LoginPage waitForPageToOpen() {
+        waiter.waitForElementToLoad(driver, loginButton, Duration.ofSeconds(3));
+        return this;
+    }
+
+    @Step("Check if login button is displayed")
     public Boolean isLoginButtonDisplayed() {
-        waiter.waitForElementToLoad(driver,loginButton, Duration.ofSeconds(10));
+        waiter.waitForElementToLoad(driver, loginButton, Duration.ofSeconds(10));
         return loginButton.isDisplayed();
     }
 }
