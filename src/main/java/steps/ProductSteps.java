@@ -18,4 +18,15 @@ public class ProductSteps {
                 .waitForPageToOpen();
         return this;
     }
+
+    @Step("Continue shopping from cart")
+    public ProductSteps continueShoppingFromCart() {
+        productsPage.goToCart().clickContinueShoppingButton();
+        return this;
+    }
+    @Step("Go to cart and click checkout")
+    public ProductSteps goToCartAndClickCheckout(){
+        productsPage.goToCart().clickCheckoutButton();
+        return this;
+    }
 }

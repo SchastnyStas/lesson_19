@@ -27,16 +27,14 @@ public class ProductsTest extends BaseTest {
     @Test(description = "Check continue shopping button")
     public void checkContinueShoppingButton() {
         loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
-        productsPage.goToCart()
-                .clickContinueShoppingButton();
+        productSteps.continueShoppingFromCart();
         Assert.assertEquals(driver.getCurrentUrl(), PRODUCTS_PAGE_URL);
     }
 
     @Test(description = "Check the checkout button")
     public void checkCheckoutButton() {
         loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
-        productsPage.goToCart()
-                .clickCheckoutButton();
+        productSteps.goToCartAndClickCheckout();
         Assert.assertEquals(driver.getCurrentUrl(), CHECKOUT_PAGE_URL);
     }
 
