@@ -33,7 +33,7 @@ public class HeaderPage extends BasePage {
     }
 
     public String getCartProductsCount() {
-        waiter.waitForElementToLoad(driver,cartNumber, Duration.ofSeconds(5));
+        waiter.waitForElementToLoad(driver, cartNumber, Duration.ofSeconds(5));
         return cartNumber.getText();
     }
 
