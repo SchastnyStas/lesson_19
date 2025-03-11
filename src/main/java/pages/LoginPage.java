@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
-    public Boolean isLoginButtonDisplayed() {
+    public boolean isLoginButtonDisplayed() {
         waiter.waitForElementToLoad(driver,loginButton, Duration.ofSeconds(10));
         return loginButton.isDisplayed();
     }
