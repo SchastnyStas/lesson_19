@@ -42,7 +42,8 @@ public class CartPage extends HeaderPage {
         return new ProductsPage(driver);
     }
 
-    public void clickCheckoutButton() {
+    public CheckoutPage clickCheckoutButton() {
         checkoutButton.click();
+        return new CheckoutPage(driver);
     }
 }

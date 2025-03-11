@@ -40,8 +40,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public Boolean isLoginButtonDisplayed() {
+    public boolean isLoginButtonDisplayed() {
         waiter.waitForElementToLoad(driver, loginButton, Duration.ofSeconds(10));
-        return loginButton.isDisplayed();
     }
 }
