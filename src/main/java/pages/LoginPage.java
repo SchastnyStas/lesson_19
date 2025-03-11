@@ -1,24 +1,38 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import pages.waiters.Waiter;
+
+import java.time.Duration;
 
 public class LoginPage extends BasePage {
-    public static final By USERNAME_INPUT = By.xpath("//*[@data-test='username']");
-    public static final By PASSWORD_INPUT = By.xpath("//*[@data-test='password']");
-    public static final By LOGIN_BUTTON = By.id("login-button");
+
+    Waiter waiter = new Waiter();
+
+    @FindBy(xpath = "//*[@data-test='username']")
+    WebElement usernameInput;
+
+    @FindBy(xpath = "//*[@data-test='password']")
+    WebElement passwordInput;
+
+    @FindBy(id = "login-button")
+    WebElement loginButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void login(String username, String password) {
-        driver.findElement(USERNAME_INPUT).sendKeys(username);
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
-        driver.findElement(LOGIN_BUTTON).click();
+    public ProductsPage login(String username, String password) {
+        usernameInput.sendKeys(username);
+        passwordInput.sendKeys(password);
+        loginButton.click();
+        return new ProductsPage(driver);
     }
 
-    public Boolean isLoginButtonDisplayed() {
-        return driver.findElement(LOGIN_BUTTON).isDisplayed();
+    public boolean isLoginButtonDisplayed() {
+        waiter.waitForElementToLoad(driver,loginButton, Duration.ofSeconds(10));
+        return loginButton.isDisplayed();
     }
 }
