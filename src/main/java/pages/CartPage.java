@@ -29,7 +29,6 @@ public class CartPage extends HeaderPage {
         return this;
     }
 
-
     public CartPage removeProducts(String... productNames) {
         log.info("Remove {} products from cart", productNames);
         for (String productName : productNames) {
@@ -42,7 +41,6 @@ public class CartPage extends HeaderPage {
         continueShoppingButton.click();
         return new ProductsPage(driver);
     }
-
 
     public void clickCheckoutButton() {
         checkoutButton.click();

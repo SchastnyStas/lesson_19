@@ -16,22 +16,22 @@ import java.util.concurrent.TimeUnit;
 public class TestListener implements ITestListener {
 
     public void onTestStart(ITestResult iTestResult) {
-        log.info((String.format("======================================== STARTING TEST {} ========================================", iTestResult.getName())));
+        log.info((String.format("======================================== STARTING TEST {} ========================================%n", iTestResult.getName())));
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-        log.info(String.format("======================================== FINISHED TEST {} Duration: {} ========================================", iTestResult.getName(),
+        log.info(String.format("======================================== FINISHED TEST {} Duration: {} ========================================%n", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        log.info(String.format("======================================== FAILED TEST {} Duration: {} ========================================", iTestResult.getName(),
+        log.info(String.format("======================================== FAILED TEST {} Duration: {} ========================================%n", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
         takeScreenshot(iTestResult);
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-        log.info(String.format("======================================== SKIPPING TEST {} ========================================", iTestResult.getName()));
+        log.info(String.format("======================================== SKIPPING TEST {} ========================================%n", iTestResult.getName()));
         takeScreenshot(iTestResult);
     }
 
@@ -49,7 +49,6 @@ public class TestListener implements ITestListener {
             return new byte[]{};
         }
     }
-
 
     private long getExecutionTime(ITestResult iTestResult) {
         return TimeUnit.MILLISECONDS.toSeconds(iTestResult.getEndMillis() - iTestResult.getStartMillis());

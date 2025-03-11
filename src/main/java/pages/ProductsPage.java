@@ -14,7 +14,6 @@ public class ProductsPage extends HeaderPage {
         super(driver);
     }
 
-
     public ProductsPage addProducts(String... productNames) {
         log.info("Add products to cart {}", productNames);
         for (String productName : productNames) {

@@ -15,7 +15,6 @@ public abstract class BasePage implements IConstants {
         PageFactory.initElements(driver, this);
     }
 
-
     public void openPage(String url) {
         log.info("Open Page URL {}", url);
         driver.get(url);

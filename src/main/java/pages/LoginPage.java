@@ -27,7 +27,6 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-
     public ProductsPage login(String username, String password) {
         log.info("Logging in with username: {}, password: {}", username, password);
         usernameInput.sendKeys(username);
@@ -36,12 +35,10 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
-
     public LoginPage waitForPageToOpen() {
         waiter.waitForElementToLoad(driver, loginButton, Duration.ofSeconds(3));
         return this;
     }
-
 
     public Boolean isLoginButtonDisplayed() {
         waiter.waitForElementToLoad(driver, loginButton, Duration.ofSeconds(10));

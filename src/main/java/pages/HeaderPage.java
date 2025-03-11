@@ -27,18 +27,15 @@ public class HeaderPage extends BasePage {
         super(driver);
     }
 
-
     public CartPage goToCart() {
         cartClick.click();
         return new CartPage(driver);
     }
 
-
     public String getCartProductsCount() {
         waiter.waitForElementToLoad(driver, cartNumber, Duration.ofSeconds(5));
         return cartNumber.getText();
     }
-
 
     public LoginPage logOut() {
         menuIcon.click();
