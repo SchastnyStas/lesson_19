@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +29,7 @@ public class CartPage extends HeaderPage {
         return this;
     }
 
-    @Step("Remove products from cart")
+
     public CartPage removeProducts(String... productNames) {
         log.info("Remove {} products from cart", productNames);
         for (String productName : productNames) {
@@ -39,13 +38,12 @@ public class CartPage extends HeaderPage {
         return this;
     }
 
-    @Step("Click continue shopping and go to products page")
     public ProductsPage clickContinueShoppingButton() {
         continueShoppingButton.click();
         return new ProductsPage(driver);
     }
 
-    @Step("Click checkout button")
+
     public void clickCheckoutButton() {
         checkoutButton.click();
     }

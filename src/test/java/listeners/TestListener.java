@@ -1,6 +1,7 @@
 package listeners;
 
 import io.qameta.allure.Attachment;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,25 +12,26 @@ import org.testng.ITestResult;
 
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class TestListener implements ITestListener {
 
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println((String.format("======================================== STARTING TEST {} ========================================", iTestResult.getName())));
+        log.info((String.format("======================================== STARTING TEST {} ========================================", iTestResult.getName())));
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.println(String.format("======================================== FINISHED TEST {} Duration: {} ========================================", iTestResult.getName(),
+        log.info(String.format("======================================== FINISHED TEST {} Duration: {} ========================================", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.println(String.format("======================================== FAILED TEST {} Duration: {} ========================================", iTestResult.getName(),
+        log.info(String.format("======================================== FAILED TEST {} Duration: {} ========================================", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
         takeScreenshot(iTestResult);
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.println(String.format("======================================== SKIPPING TEST {} ========================================", iTestResult.getName()));
+        log.info(String.format("======================================== SKIPPING TEST {} ========================================", iTestResult.getName()));
         takeScreenshot(iTestResult);
     }
 

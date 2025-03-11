@@ -1,7 +1,6 @@
 package pages;
 
 import constants.IConstants;
-import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -16,7 +15,7 @@ public abstract class BasePage implements IConstants {
         PageFactory.initElements(driver, this);
     }
 
-    @Step("Open page")
+
     public void openPage(String url) {
         log.info("Open Page URL {}", url);
         driver.get(url);

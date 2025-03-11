@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,19 +27,19 @@ public class HeaderPage extends BasePage {
         super(driver);
     }
 
-    @Step("Go to cart")
+
     public CartPage goToCart() {
         cartClick.click();
         return new CartPage(driver);
     }
 
-    @Step("Get products count")
+
     public String getCartProductsCount() {
         waiter.waitForElementToLoad(driver, cartNumber, Duration.ofSeconds(5));
         return cartNumber.getText();
     }
 
-    @Step("Log out")
+
     public LoginPage logOut() {
         menuIcon.click();
         logoutButton.click();

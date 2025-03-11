@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +14,7 @@ public class ProductsPage extends HeaderPage {
         super(driver);
     }
 
-    @Step("Add products to cart")
+
     public ProductsPage addProducts(String... productNames) {
         log.info("Add products to cart {}", productNames);
         for (String productName : productNames) {
